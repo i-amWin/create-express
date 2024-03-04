@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import { CustomError } from "../utils/custom-error";
-import { Error as MError } from "mongoose";
 
 export const errorMiddleware = (
   err: unknown,
@@ -15,11 +14,6 @@ export const errorMiddleware = (
     case err instanceof CustomError:
       statusCode = err.statusCode;
       message = err.message;
-      break;
-
-    case err instanceof MError.CastError:
-      statusCode = 400;
-      message = `Resource not found. Invalid: ${err.path}`;
       break;
 
     case err && typeof err === "object" && "code" in err && err.code === 11000:
