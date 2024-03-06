@@ -26,6 +26,8 @@ export const copyTemplate = (
     templatesDir = path.join(templatesDir, "express-mongo-mongoose");
   } else if (database === "mongodb" && orm === "prisma") {
     templatesDir = path.join(templatesDir, "express-mongo-prisma");
+  } else if (database === "postgresql" && orm === "prisma") {
+    templatesDir = path.join(templatesDir, "express-postgres-prisma");
   } else {
     templatesDir = path.join(templatesDir, "express");
   }
